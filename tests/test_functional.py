@@ -85,3 +85,32 @@ def test_apartment_has_any_bills():
 
     has_bills = manager.has_any_bills('apart-polanka', 2025, 3)
     assert has_bills == False
+
+def test_blacklist():
+    manager = Manager(Parameters())
+    
+    manager.blacklists.append(Blacklist(
+        name = "Mariusz",
+        last_name = "Kaznodziej",
+        blacklist_reason = "Not paying the deposit"          
+    ))
+    manager.blacklists.append(Blacklist(
+            name = "Agata",
+            last_name = "Kaznodziej",
+            blacklist_reason = "Vandilising the property"          
+    ))
+    manager.blacklists.append(Blacklist(
+            name = "Filip",
+            last_name = "Bluza",
+            blacklist_reason = "Rudeness"          
+    ))
+    
+    in_blacklist = manager.blacklist("Agata", "Kaznodziej")
+    assert in_blacklist == True
+    
+    in_blacklist = manager.blacklist("Daniel", "Narovidsky")
+    assert in_blacklist == False
+    
+
+#blacklist
+#is tenant blocked
