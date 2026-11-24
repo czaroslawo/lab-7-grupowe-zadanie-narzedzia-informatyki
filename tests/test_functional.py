@@ -89,20 +89,20 @@ def test_apartment_has_any_bills():
 def test_blacklist():
     manager = Manager(Parameters())
     
-    manager.blacklists.append(Blacklist(
+    manager.blacklists.append(BlackList(
         name = "Mariusz",
         last_name = "Kaznodziej",
-        blacklist_reason = "Not paying the deposit"          
+        reason = "Not paying the deposit"          
     ))
-    manager.blacklists.append(Blacklist(
+    manager.blacklists.append(BlackList(
             name = "Agata",
             last_name = "Kaznodziej",
-            blacklist_reason = "Vandilising the property"          
+            reason = "Vandilising the property"          
     ))
-    manager.blacklists.append(Blacklist(
+    manager.blacklists.append(BlackList(
             name = "Filip",
             last_name = "Bluza",
-            blacklist_reason = "Rudeness"          
+            reason = "Rudeness"          
     ))
     
     in_blacklist = manager.blacklist("Agata", "Kaznodziej")
