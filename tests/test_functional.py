@@ -1,4 +1,4 @@
-from src.models import Bill, Parameters, TenantSettlement, ApartmentSettlement, Transfer
+from src.models import Bill, Parameters, TenantSettlement, ApartmentSettlement, Transfer, BlackList
 from src.manager import Manager
 
 

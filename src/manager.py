@@ -1,5 +1,5 @@
 from src.models import Apartment, Bill, Parameters, Tenant, TenantSettlement, Transfer, ApartmentSettlement
-from typing import List, Tuple
+from typing import List
 
 class Manager:
     def __init__(self, parameters: Parameters):
@@ -9,6 +9,7 @@ class Manager:
         self.tenants = {}
         self.transfers = []
         self.bills = []
+        self.blacklists = []
        
         self.load_data()
 
@@ -112,3 +113,10 @@ class Manager:
         if apartment_key not in self.apartments:
             raise ValueError("Apartment key does not exist")
         return any([bill for bill in self.bills if bill.apartment == apartment_key and bill.settlement_year == year and bill.settlement_month == month])
+
+    def blacklist(self, name: str, last_name: str):
+        for person in self.blacklists:
+            if person.name == name and person.last_name == last_name:
+                return True
+        return False
+
